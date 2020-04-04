@@ -14,22 +14,26 @@ class Search extends Component {
   handleSearch = () => {
     this.makeApiCall(this.state.searchValue);
   };
-
+ 
   makeApiCall = searchInput => {
-    var searchUrl = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchInput}`;
+    var searchUrl = `http://localhost:3000/search`;
     fetch(searchUrl)
       .then(response => {
+
+        console.log(response);
         return response.json();
+    
       })
       .then(jsonData => {
         this.setState({ meals: jsonData.meals });
       });
+      
   };
 
   render() {
     return (
       <div id="main">
-        <h1>Welcome to the meal search app</h1>
+        <h1>TIE_IN </h1>
         <input
           name="text"
           type="text"
@@ -41,14 +45,14 @@ class Search extends Component {
         {this.state.meals ? (
           <div id="meals-container">
             {this.state.meals.map((meal, index) => (
-              <div class="single-meal" key={index}>
+              <div className="single-meal" key={index}>
                 <h2>{meal.strMeal}</h2>
                 <img src={meal.strMealThumb} alt="meal-thumbnail" />
               </div>
             ))}
           </div>
         ) : (
-          <p>Try searching for a meal</p>
+          <p>Try searching for a Username</p>
         )}
       </div>
     );
