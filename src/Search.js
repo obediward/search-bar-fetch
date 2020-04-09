@@ -16,7 +16,7 @@ class Search extends Component {
   };
  
   makeApiCall = searchInput => {
-    var searchUrl = `http://localhost:3000/search`;
+    var searchUrl = `http://localhost:3000/hashtags`;
     fetch(searchUrl)
       .then(response => {
 
